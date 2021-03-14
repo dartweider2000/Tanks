@@ -1,0 +1,79 @@
+/*=========-Готовые классы-========================================================*/
+/*.Меню бургер + active.*/
+.burger{
+	display: block;
+	position: relative;
+	width: 30px;
+	height: 22px;
+	top: 0;
+	left: 0;
+	&:before,&:after{
+		content: '';
+		position: absolute;
+		width: 100%;
+		height: 2px;
+		left: 0;
+		background-color: black;
+		@include anim(0.5s,all,0s);
+	}
+	&:before{
+		top: 2px;
+	}
+	&:after{
+		bottom: 0;
+	}
+	&>span{
+		position: absolute;
+		width: 100%;
+		height: 2px;
+		top: 50%;
+		left: 0;
+		background-color: black;
+		@include anim(0.5s,all,0s);
+	}
+	&.active{
+		&:before{
+			top: 11px;
+			background-color: black;
+			@include rotate(45deg);
+			@include anim(0.5s,all,0s);
+		}
+		&:after{
+			bottom: 9px;
+			background-color: black;
+			@include rotate(-45deg);
+			@include anim(0.5s,all,0s);
+		}
+		&>span{
+			@include scale(0);
+			@include anim(0.5s,all,0s);
+		}
+	}
+	//=========-media-=======================================
+		@media(min-width: $mw3 + 1px){
+			display: none;
+		}
+	//=======================================================
+}
+/*.Отлючение скролла при бургере.*/
+body.lock{
+	overflow: hidden;
+	width: 100%;
+}
+/*.Адаптив фото.*/
+.ibg{
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+	position: relative;
+	&>img{
+		width: 0;
+		height: 0;
+		position: absolute;
+		top: 0;
+		left: 0;
+		opacity: 0;
+		visibility: hidden;
+	}
+}
+/*==================================================================================*/
